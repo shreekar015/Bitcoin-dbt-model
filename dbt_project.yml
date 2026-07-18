@@ -33,3 +33,7 @@ models:
   BTC:
     marts:
       +materialized: table
+      +post-hook:
+        - "COMMENT ON TABLE {{ this }} IS 'This table was created by dbt';"
+        - "{{ create_latest_version_view() }}"
+
